@@ -1,0 +1,155 @@
+{
+  "name": "Google Index Checker",
+  "grid_columns": 4,
+  "grid_rows": 4,
+  "routes": {
+    "5d306d6728b5ee145d775397_finally_5d306d6728b5ee145d775398": {
+      "cookie": "remove",
+      "referer": "remove",
+      "urls": "",
+      "http_method": "get",
+      "new_referer": "",
+      "new_cookie": "",
+      "merge_cookie_data": false,
+      "post_data": "",
+      "merge_post_data": false,
+      "get_data": "",
+      "merge_get_data": false,
+      "custom_data": "",
+      "merge_custom_data": true
+    },
+    "5d306d6728b5ee145d775398_finally_5d306d6728b5ee145d775399": {
+      "cookie": "default",
+      "referer": "default",
+      "urls": ["https://www.google.com/search?q=site:{{ $sys.stats.URL }}"],
+      "http_method": "get",
+      "new_referer": null,
+      "new_cookie": null,
+      "merge_cookie_data": false,
+      "post_data": null,
+      "merge_post_data": false,
+      "get_data": null,
+      "merge_get_data": false,
+      "custom_data": "{\"url_full\":\"$sys.stats.URL\",\"url_path\":\"$sys.stats.URL_PATH\"}",
+      "merge_custom_data": true
+    },
+    "5d306d6728b5ee145d775399_finally_5d306d6728b5ee145d77539a": {
+      "cookie": "remove",
+      "referer": "remove",
+      "urls": "",
+      "http_method": "get",
+      "new_referer": "",
+      "new_cookie": "",
+      "merge_cookie_data": false,
+      "post_data": "",
+      "merge_post_data": false,
+      "get_data": "",
+      "merge_get_data": false,
+      "custom_data": "",
+      "merge_custom_data": true
+    }
+  },
+  "tasks": [{
+    "type": "Input",
+    "name": "Input",
+    "workers": 1,
+    "ignore_merge_data": false,
+    "grid_cell": 1,
+    "_id": "5d306d6728b5ee145d775397",
+    "updated_at": "2019-08-07T15:55:52.000Z"
+  }, {
+    "name": "Crawl Site",
+    "type": "Crawl",
+    "workers": 3,
+    "ignore_merge_data": false,
+    "grid_cell": 2,
+    "cookie": false,
+    "proxies_mode": "default",
+    "ignore_merge_stats": false,
+    "referer_auto": true,
+    "timeout_connect": 10,
+    "timeout_request": 30,
+    "max_retry": [{
+      "code": "DEFAULT",
+      "max_retry": 1
+    }, {
+      "code": "NO-DATA-URL",
+      "max_retry": 10
+    }, {
+      "code": "NOT-SAME-DOMAIN",
+      "max_retry": 10
+    }, {
+      "code": "RETRY-URL",
+      "max_retry": 100
+    }],
+    "discover_new_links": true,
+    "discover_all_domains": false,
+    "ignore_noindex": false,
+    "ignore_nofollow": false,
+    "proxies": null,
+    "user_agents": null,
+    "allow_links": null,
+    "disallow_links": null,
+    "retry_links": null,
+    "headers": null,
+    "xpath": null,
+    "bucket_id": null,
+    "batch_size": null,
+    "_id": "5d306d6728b5ee145d775398",
+    "updated_at": "2019-11-13T16:09:33.000Z",
+    "cookie_auto": false,
+    "ignore_links": null
+  }, {
+    "name": "Check Indexation Google",
+    "type": "Crawl",
+    "workers": 7,
+    "ignore_merge_data": true,
+    "grid_cell": 6,
+    "cookie": false,
+    "proxies_mode": "default",
+    "ignore_merge_stats": false,
+    "referer_auto": true,
+    "timeout_connect": 10,
+    "timeout_request": 30,
+    "max_retry": [{
+      "code": "DEFAULT",
+      "max_retry": 1
+    }, {
+      "code": "NO-DATA-URL",
+      "max_retry": 10
+    }, {
+      "code": "NOT-SAME-DOMAIN",
+      "max_retry": 10
+    }, {
+      "code": "RETRY-URL",
+      "max_retry": -1
+    }],
+    "discover_new_links": false,
+    "discover_all_domains": false,
+    "ignore_noindex": false,
+    "ignore_nofollow": false,
+    "proxies": null,
+    "user_agents": null,
+    "allow_links": null,
+    "disallow_links": null,
+    "retry_links": ["/sorry/"],
+    "headers": null,
+    "xpath": "{\"001_url\":\"$sys.data.url_full\",\"002_full_url_indexed\":\"xpath('//a[contains(@href, \\\"' + $sys.data.url_full + '\\\")]').bool()\",\"003_path_url_indexed\":\"xpath('//a[contains(@href, \\\"' + $sys.data.url_path + '\\\")]').bool()\"}",
+    "bucket_id": null,
+    "batch_size": null,
+    "_id": "5d306d6728b5ee145d775399",
+    "updated_at": "2019-11-13T16:09:18.000Z",
+    "cookie_auto": false,
+    "ignore_links": null
+  }, {
+    "name": "DataVisualization",
+    "type": "DataVisualization",
+    "workers": 1,
+    "grid_cell": 5,
+    "ignore_merge_data": false,
+    "_id": "5d306d6728b5ee145d77539a",
+    "updated_at": "2019-11-13T16:09:21.000Z"
+  }],
+  "updated_at": "2019-11-14T10:16:37.000Z",
+  "created_at": "2019-07-18T13:00:23.000Z"
+}

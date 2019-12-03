@@ -1,0 +1,4 @@
+{
+  "name": "Google Index Checker",
+  "description": "Crawl a site, then check if each page are indexed by Google."
+}
