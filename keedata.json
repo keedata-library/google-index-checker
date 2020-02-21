@@ -1,4 +1,19 @@
 {
   "name": "Google Index Checker",
-  "description": "Crawl a site, then check if each page are indexed by Google."
+  "description": "Crawl a site, then check if each page are indexed by Google.",
+  "easyconfig": [{
+    "name": "Websites to check",
+    "type": "list",
+    "value": ["https://www.keedata.io"],
+    "required": true,
+    "actions": [
+      {
+        "type": "tasks",
+        "_id": "5e43ef4cf618f1340b646332",
+        "fields": ["start_urls"],
+        "method": "set",
+        "args": []
+      }
+    ]
+  }]
 }
