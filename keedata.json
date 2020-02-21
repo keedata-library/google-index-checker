@@ -13,6 +13,13 @@
         "fields": ["start_urls"],
         "method": "set",
         "args": []
+      },
+      {
+        "type": "tasks",
+        "_id": "5e43ef4cf618f1340b646332",
+        "fields": ["name"],
+        "method": "set",
+        "args": ["first"]
       }
     ]
   }]
